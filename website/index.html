@@ -7,28 +7,35 @@
 <link rel="stylesheet" href="style.css">
 </head>
  <body>
-<div id = "app">
-  <div class ="holder headline">
+<form id = "app">
+  <h1 class ="holder headline">
     Weather Journal App
-  </div>
-  <div class ="holder zip">
+  </h1>
+  <section class ="holder zip">
     <label for="zip">Enter Zipcode here</label>
-    <input type="text" id="zip" placeholder="enter zip code here">
-  </div>
-  <div class ="holder feel">
+    <input 
+      type="text" 
+      id="zip" 
+      pattern="[0-9]{5}" 
+      placeholder="Enter zip code here"
+      title="Please enter a valid 5 digit numeric zip-code">
+  </section>
+  <section class ="holder feel">
     <label for="feelings">How are you feeling today?</label>
     <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50"></textarea>
     <button id="generate" type = "submit"> Generate </button>
-  </div>
-  <div class ="holder entry">
-    <div class = "title">Most Recent Entry</div>
-   <div id = "entryHolder">
-    <div id = "date"></div> 
-   <div id = "temp"></div>
-   <div id = "content"></div>
-  </div>
-  </div>
-  </div>
+  </section>
+  <section id="recent" class ="holder entry">
+    <section class = "title">Most Recent Entry</section>
+
+   <section id = "entryHolder">
+    <section id = "date"></section> 
+    <section id = "temp"></section>
+    <section id = "content"></section>
+   </section>
+
+</section>
+</form>
 <script src="app.js" type="text/javascript"></script>
 
 </body>
