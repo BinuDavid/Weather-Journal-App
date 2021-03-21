@@ -37,4 +37,7 @@ app.post("/", function (req, res) {
   projectData.temp = data.temp;
   projectData.date = data.date;
   projectData.user = data.user;
+
+  console.log(projectData);
+  res.send(projectData);
 });
