@@ -5,12 +5,14 @@ const units = "&units=imperial";
 const api_key = "&appid=f9073135a549c17ba1e1db22044aeb25";
 const generate = document.querySelector("#generate");
 const feelings = document.querySelector("#feelings");
+
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = d.getMonth() + "." + d.getDate() + "." + d.getFullYear();
 
 // Click Event
-generate.addEventListener("click", () => {
+generate.addEventListener("click", (event) => {
+  event.preventDefault();
   const zip = document.querySelector("#zip");
 
   // Check Validity of #Zip
@@ -28,27 +30,27 @@ generate.addEventListener("click", () => {
 
 // Get Function  - Fetch Method
 const get = async (base_url, zip, units, api) => {
-  const url = base_url + zip + ",us" + units + api;
+  const url = base_url + zip + units + api;
+  console.log(url);
   const response = await fetch(url);
 
   try {
-    const data = await response.json().then((data) => {
+    await response.json().then((data) => {
       post("/", data);
     });
-  } catch (err) {
-    console.error("Error", err);
+  } catch (error) {
+    console.error("Get Error", error);
   }
 };
 
-// post Function
+// Post Function
 const post = async (url = "", data) => {
   const processedData = {
-    temp: data.main.temp,
+    temp: `${data.main.temp} °F`,
     date: newDate,
     user: feelings.value,
   };
-  console.log(processedData);
-  const response = await fetch("/", {
+  const response = await fetch("http://localhost:3000/", {
     method: "POST",
     credentials: "same-origin",
     headers: {
@@ -58,9 +60,25 @@ const post = async (url = "", data) => {
   });
 
   try {
-    const newData = await response.json();
-    console.log(newData);
+    await response.json().then((postData) => {
+      updateUI(postData);
+    });
   } catch (error) {
-    console.error("Error", error);
+    console.error("Post Error", error);
+  }
+};
+
+const updateUI = async (postData) => {
+  const date = document.querySelector("#date");
+  const temp = document.querySelector("#temp");
+  const content = document.querySelector("#content");
+
+  try {
+    console.log("UpdateUI", postData);
+    date.textContent = postData.date;
+    temp.textContent = postData.temp;
+    content.textContent = postData.user;
+  } catch (error) {
+    console.error("UI Error", error);
   }
 };

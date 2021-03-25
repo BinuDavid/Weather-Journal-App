@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
  <body>
-<form id = "app" action="#">
+<form id = "app">
   <h1 class ="holder headline">
     Weather Journal App
   </h1>
@@ -18,20 +18,34 @@
       type="text" 
       id="zip" 
       pattern="[0-9]{5}" 
-      placeholder="Enter zip code here">
+      placeholder="Enter zip code here"
+      required>
   </section>
   <section class ="holder feel">
     <label for="feelings">How are you feeling today?</label>
-    <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50"></textarea>
+    <textarea 
+      class= "myInput" 
+      id="feelings" 
+      placeholder="Enter your feelings here" 
+      rows="9" 
+      cols="50" 
+      required>
+    </textarea>
     <button id="generate" type = "submit"> Generate </button>
   </section>
   <section id="recent" class ="holder entry">
     <section class = "title">Most Recent Entry</section>
 
    <section id = "entryHolder">
-    <section id = "date"></section> 
-    <section id = "temp"></section>
-    <section id = "content"></section>
+    <div class="category">Date:
+      <section id = "date" class="entry-Holder-format"></section> 
+    </div> 
+    <div class="category">Temp:
+      <section id = "temp" class="entry-Holder-format"></section>
+    </div>
+    <div class="category">Comments:
+      <section id = "content" class="entry-Holder-format"></section>
+    </div>
    </section>
 
 </section>

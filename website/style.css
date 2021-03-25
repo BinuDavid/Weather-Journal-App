@@ -10,7 +10,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 .entry {
-  background: rgba(59, 74, 107, 0.4);
+  background: rgba(17, 21, 29, 0.603);
 }
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
@@ -49,6 +49,7 @@ button {
   font-family: "Oswald", sans-serif;
   border: none;
   box-shadow: 2px 4px 5px #444;
+  margin-bottom: 10px;
 }
 h1 {
   font-size: 36px;
@@ -77,4 +78,49 @@ button:focus {
 ::-webkit-input-placeholder {
   text-align: left;
   color: white;
+}
+
+/* Most Recent Entry Section */
+#recent {
+  padding: 5px;
+}
+
+#entryHolder {
+  display: grid;
+  grid-template-columns: 1fr 1fr 3fr;
+  grid-template-rows: minmax(25px, auto);
+  grid-template-areas: "date temp content";
+  gap: 25px;
+  justify-items: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.35em;
+  font-weight: bold;
+}
+
+#date {
+  grid-area: date;
+  font-size: 1.25em;
+}
+
+#temp {
+  grid-area: temp;
+}
+
+#content {
+  grid-area: content;
+}
+
+.entry-Holder-format {
+  font-size: 1.25em;
+  color: white;
+  padding-top: 25px;
+}
+
+.category {
+  display: block;
+  font-size: 1.2em;
+  color: #01161b;
 }

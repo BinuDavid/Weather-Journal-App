@@ -14,6 +14,7 @@ app.use(bodyParser.json());
 
 // Cors for cross origin allowance
 const cors = require("cors");
+app.use(cors());
 
 // Initialize the main project folder
 app.use(express.static("website"));
@@ -26,7 +27,8 @@ const server = app.listen(port, () => {
 });
 
 // GET route
-app.get("/", function (req, res) {
+app.get("/all", function (req, res) {
+  console.info("Get Route", projectData);
   res.send(projectData);
 });
 
@@ -38,6 +40,6 @@ app.post("/", function (req, res) {
   projectData.date = data.date;
   projectData.user = data.user;
 
-  console.log(projectData);
+  console.info("Post Route", projectData);
   res.send(projectData);
 });
