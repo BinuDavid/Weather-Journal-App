@@ -2,7 +2,8 @@
 const base_url = "https://api.openweathermap.org/data/2.5/weather?zip=";
 // Farenheit units
 const units = "&units=imperial";
-const api_key = "&appid=f9073135a549c17ba1e1db22044aeb25";
+// Enter a valid API Key
+const api_key = "";
 const generate = document.querySelector("#generate");
 const feelings = document.querySelector("#feelings");
 
@@ -31,7 +32,6 @@ generate.addEventListener("click", (event) => {
 // Get Function  - Fetch Method
 const get = async (base_url, zip, units, api) => {
   const url = base_url + zip + units + api;
-  console.log(url);
   const response = await fetch(url);
 
   try {
@@ -74,7 +74,6 @@ const updateUI = async (postData) => {
   const content = document.querySelector("#content");
 
   try {
-    console.log("UpdateUI", postData);
     date.textContent = postData.date;
     temp.textContent = postData.temp;
     content.textContent = postData.user;
